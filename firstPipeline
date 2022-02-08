@@ -1,0 +1,18 @@
+pipeline { 
+    agent any
+    stages {
+        stage("first Stage"){
+            steps{
+            
+            echo "Hello World"    
+            }
+            
+        }
+    }
+    
+    post {
+        always {
+            echo "Post section of the pipeline"
+        }
+    }
+}
