@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment{
     tool="jenkins"
-    git_creds=credentials('Git Credentials')
+    CREDS = credentials('Git Credentials')
 }
     stages {
         stage("first Stage"){
@@ -10,7 +10,7 @@ pipeline {
             
             echo "Hello World to shivam"    
  	    sh 'printenv'
-            echo "Username is $git_creds_USR"
+            echo "Username is $CREDS_USR"
             }
             
         }
