@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment{
     tool="jenkins"
-    CREDS = credentials('Git Credentials')
+    CREDS = credentials('94c10d30-b68e-4fa3-a0d6-5702dcbdd38f')
 }
     stages {
         stage("first Stage"){
