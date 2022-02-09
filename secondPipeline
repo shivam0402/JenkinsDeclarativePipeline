@@ -15,6 +15,7 @@ pipeline {
             echo "Hello World to shivam"    
  	    sh 'printenv'
             echo "Username is $CREDS_USR"
+            echo "Password is $CREDS_PSW"
             }
             
         }
