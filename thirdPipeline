@@ -1,0 +1,34 @@
+pipeline { 
+    agent none
+    environment{
+    tool="jenkins"
+    CREDS = credentials('94c10d30-b68e-4fa3-a0d6-5702dcbdd38f')
+}
+
+    parameters{
+	string(name: 'testing Parameters', defaultValue: "testing" , Description: "for testing Purposes")
+	booleanParam(name: 'want to run the build', defaultValue: true, Description: "for testing Purposes")        
+}
+    stages {
+         
+        stage("first Stage"){
+           agent {
+ 		node { label 'testNode' }
+	}
+            steps{
+            
+            echo "Hello World to shivam"    
+ 	    sh 'printenv'
+            echo "Username is $CREDS_USR"
+            echo "Password is $CREDS_PSW"
+            }
+            
+        }
+    }
+    
+    post {
+        always {
+            echo "Post section of the pipeline"
+        }
+    }
+}
