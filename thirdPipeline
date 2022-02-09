@@ -6,8 +6,8 @@ pipeline {
 }
 
     parameters{
-	string(name: 'testing Parameters', defaultValue: "testing" , Description: "for testing Purposes")
-	booleanParam(name: 'want to run the build', defaultValue: true, Description: "for testing Purposes")        
+	string(name: 'testing Parameters', defaultValue: "testing" , description: "for testing Purposes")
+	booleanParam(name: 'want to run the build', defaultValue: true, description: "for testing Purposes")        
 }
     stages {
          
