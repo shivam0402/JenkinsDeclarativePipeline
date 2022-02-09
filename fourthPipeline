@@ -1,0 +1,38 @@
+pipeline { 
+    agent none
+    environment{
+    tool="jenkins"
+    CREDS = credentials('94c10d30-b68e-4fa3-a0d6-5702dcbdd38f')
+}
+
+    parameters{
+	string(name: 'testingParameters', defaultValue: "testing" , description: "for testing Purposes")
+	booleanParam(name: 'runBuild', defaultValue: true, description: "for testing Purposes")        
+        choice(name: 'Languages',choices: ['java','python','c++','node','shell'],description: "Select your preferred language") 
+}
+    stages {
+         
+        stage("first Stage"){
+           agent {
+ 		node { label 'testNode' }
+	}
+            steps{
+            
+            echo "Hello World to shivam"    
+ 	    sh 'printenv'
+            echo "Username is $CREDS_USR"
+            echo "Password is $CREDS_PSW"
+	    echo "################Printing Parameters using param"
+	    echo "${params.testingParameters}"
+	    echo "choices are ${params.Languages}"
+            }
+            
+        }
+    }
+    
+    post {
+        always {
+            echo "Post section of the pipeline"
+        }
+    }
+}
